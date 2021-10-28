@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  const person = {
+    name: '蓝忘机',
+    age: 18,
+  }
+
+  const dl = new Proxy(person, {
+    get(target, propName) {
+      console.log(`有人读取了person身上的属性`, target, propName, receiver)
+      // return target[propName];
+      return Reflect.get(target, propName)
+    },
+    //删除、修改都走set
+    set(target, propName, value) {
+      console.log(`有人修改了person身上的属性`);
+      target[propName] = value;
+      Reflect.set(target, propName, value)
+    },
+    deleteProperty(target, propName) {
+      console.log(`删除了${propName}属性`);
+      return Reflect.deleteProperty(target, propName);
+    }
+  });
+
+  /**
+   * Object.defineProperty(object,propName,{})
+   * Object.defineProperty 重复定义添加一个新属性会报错！
+   * 可以 try ... catch ... 捕获错误
+   */
+
+  // Object.defineProperty(person, 'address', {
+  //   get() {
+  //     return 100
+  //   }
+  // });
+  // Object.defineProperty(person, 'address', {
+  //   get() {
+  //     return 101
+  //   }
+  // });
+
+  /**
+   * Reflect.defineProperty 不会报错导致整个程序无法进行 通过返回值告知是否添加成功
+   * @type {boolean}
+   */
+
+  // const r1 = Reflect.defineProperty(person, 'address', {
+  //     get() {
+  //       return 100
+  //     }
+  //   });
+  // const r2 = Reflect.defineProperty(person, 'address', {
+  //   get() {
+  //     return 100
+  //   }
+  // });
+  // console.log(r1, r2, 33)
+</script>
+
+</body>
+</html>
