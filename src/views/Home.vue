@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Test from '../components/watch函数'
+import Test from '../components/watchEffect函数'
 
 export default {
   name: 'Home',

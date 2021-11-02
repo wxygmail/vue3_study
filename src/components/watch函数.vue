@@ -34,6 +34,17 @@ export default {
         }
       }
     });
+    /**
+     const person1 = ref({
+      name: '蓝忘机',
+      age: 18,
+      work: {
+        job1: {
+          salary: 20
+        }
+      }
+    });
+     */
     //-----监听ref定义的一个响应式数据
     // watch(sum, (newVal, oldVal) => {
     //   console.log('sum发生了改变：', newVal, oldVal)
@@ -43,6 +54,16 @@ export default {
     // watch([sum, message], (newVal, oldVal) => {
     //   console.log('sum或者message发生了改变：', newVal, oldVal)
     // })
+
+    // ----- 监听一个ref定义的对象
+    // *****第一种方法
+    // watch(person1.value, (newVal, oldVal) => {
+    //   console.log('sum或者message发生了改变：', newVal, oldVal)
+    // })
+    // *****第二种方法
+    // watch(person1, (newVal, oldVal) => {
+    //   console.log('sum或者message发生了改变：', newVal, oldVal)
+    // }, {deep: true})
 
     /**
      * -----监听reactive定义的一个响应式数据
