@@ -1,17 +1,29 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <Test />
+    <Test address="11111" @handleClick="handleClick">
+      <template v-slot:hello>
+        <p>setUp函数里面的插槽内容</p>
+      </template>
+    </Test>
   </div>
 </template>
 
 <script>
-import Test from '../components/reactive函数'
+import Test from '../components/watch函数'
 
 export default {
   name: 'Home',
   components: {
     Test
+  },
+  setup() {
+    const handleClick = (value) => {
+      console.log(value)
+    };
+    return {
+      handleClick
+    }
   }
 }
 </script>
