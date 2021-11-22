@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
     <Test address="11111" @handleClick="handleClick">
       <template v-slot:hello>
         <p>setUp函数里面的插槽内容</p>
@@ -10,7 +9,7 @@
 </template>
 
 <script>
-import Test from '../components/watchEffect函数'
+import Test from '../components/Suspense.vue'
 
 export default {
   name: 'Home',
